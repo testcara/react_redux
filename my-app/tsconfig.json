@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES5",                                // 输出的 JavaScript 目标版本，适合浏览器兼容
+    "lib": ["dom", "dom.iterable", "esnext"],       // 指定编译时包含的库文件
+    "allowJs": true,                                // 允许编译 JavaScript 文件
+    "skipLibCheck": true,                           // 跳过库的类型检查，提高构建速度
+    "esModuleInterop": true,                        // 允许默认导入非 ES 模块
+    "allowSyntheticDefaultImports": true,           // 允许默认导入没有默认导出的模块
+    "strict": true,                                 // 启用所有严格类型检查选项
+    "forceConsistentCasingInFileNames": true,       // 强制文件名区分大小写
+    "module": "ESNext",                             // 使用 ESNext 模块系统
+    "moduleResolution": "node",                     // 使用 Node.js 模块解析策略
+    "resolveJsonModule": true,                      // 允许导入 JSON 文件
+    "isolatedModules": true,                        // 独立模块，防止模块间干扰
+    "noEmit": true,                                 // 不生成输出文件，仅进行类型检查
+    "jsx": "react-jsx",                             // 启用新 JSX 转换
+    "strictNullChecks": true,                       // 启用严格的 null 检查
+    "noUnusedLocals": true,                         // 不允许未使用的本地变量
+    "noUnusedParameters": true,                     // 不允许未使用的函数参数
+    "noImplicitReturns": true,                      // 函数必须显式返回值
+    "noImplicitThis": true,                         // `this` 必须有明确类型
+    "skipDefaultLibCheck": true                     // 跳过默认库的类型检查
+  },
+  "include": [
+    "src/**/*"                                      // 包括 src 文件夹中的所有文件
+  ],
+  "exclude": [
+    "node_modules",                                 // 排除 node_modules 文件夹
+    "build"                                         // 排除 build 文件夹（如果有）
+  ]
+}
