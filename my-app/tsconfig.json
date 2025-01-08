@@ -19,7 +19,7 @@
     "noUnusedParameters": true,                     // 不允许未使用的函数参数
     "noImplicitReturns": true,                      // 函数必须显式返回值
     "noImplicitThis": true,                         // `this` 必须有明确类型
-    "skipDefaultLibCheck": true                     // 跳过默认库的类型检查
+    "skipDefaultLibCheck": true,                     // 跳过默认库的类型检查
   },
   "include": [
     "src/**/*"                                      // 包括 src 文件夹中的所有文件

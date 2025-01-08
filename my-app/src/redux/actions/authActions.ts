@@ -5,6 +5,8 @@
 // 定义action type属性值
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
 // 定义action
 interface LoginSuccessAction {
@@ -17,16 +19,43 @@ interface LoginFailureAction {
   payload: string; // 表示失败的原因或错误消息
 }
 
+interface RegisterSuccessAction {
+  type: typeof REGISTER_SUCCESS;
+  payload: { username: string };
+}
+
+interface RegisterFailureAction {
+  type: typeof REGISTER_FAILURE;
+  payload: string;
+}
+
 // 合并action类型。 AuthActionTypes表示成功登录或失败登录的action
-export type AuthActionTypes = LoginSuccessAction | LoginFailureAction;
+export type AuthActionTypes =
+  | LoginSuccessAction
+  | LoginFailureAction
+  | RegisterFailureAction
+  | RegisterSuccessAction;
 
 // action创建函数，创建定义的action对象
+
+// loginSuccess action creator 接收一个username的参数，然后返回LoginSucessAction
 export const loginSuccess = (username: string): AuthActionTypes => ({
   type: LOGIN_SUCCESS,
   payload: { username },
 });
 
+// loginFailure action creator 接收一个errormessage，然后返回LoginFailureAction
 export const loginFailure = (errorMessage: string): AuthActionTypes => ({
   type: LOGIN_FAILURE,
+  payload: errorMessage,
+});
+
+export const registerSuccess = (username: string): AuthActionTypes => ({
+  type: REGISTER_SUCCESS,
+  payload: { username },
+});
+
+export const registerFailure = (errorMessage: string): AuthActionTypes => ({
+  type: REGISTER_FAILURE,
   payload: errorMessage,
 });

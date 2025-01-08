@@ -2,7 +2,8 @@
 
 1. create basic project ```npx create-react-app my-app --typescript --scripts-version 5.0.1```
 2. install the redux related ```npm install redux@4.x react-redux@7.x redux-thunk@2.x``` and ```@types/redux @types/react-redux @types/redux-thunk```
-3. install the test related ```npm install --save-dev jest @testing-library/react @types/jest ts-jest @testing-library/jest-dom```
+3. install the api related ```npm install --save-dev axios@^0.27.2 @types/axios@^0.14.0```
+1. install the test related ```npm install --save-dev jest @testing-library/react @types/jest ts-jest @testing-library/jest-dom```
 
 知识点：
 1. redux action 描述发生了什么事。它的作用是通知应用的状态应该发生什么变化。一个action对象
