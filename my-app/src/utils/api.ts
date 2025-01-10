@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-
+import { logToLocalStorage } from './logUtil';
 // 创建一个 axios 实例
 const apiClient: AxiosInstance = axios.create({
   baseURL: 'http://localhost:5000/api', // 设置基础URL
@@ -12,8 +12,7 @@ const apiClient: AxiosInstance = axios.create({
 // 可以添加请求拦截器和响应拦截器
 apiClient.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    // 在请求发送之前做些什么
-    console.log('Request made with ', config);
+    logToLocalStorage(`Request made`)
     return config;
   },
   (error) => {
@@ -24,11 +23,11 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
-    // 对响应数据做些什么
+    logToLocalStorage(`got response: ${response}`)
     return response;
   },
   (error) => {
-    // 响应错误处理
+    logToLocalStorage(`Response error ${error}`)
     console.error('Response error:', error);
     return Promise.reject(error);
   }

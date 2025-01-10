@@ -7,6 +7,8 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
 // 定义action
 interface LoginSuccessAction {
@@ -29,8 +31,20 @@ interface RegisterFailureAction {
   payload: string;
 }
 
+interface LogOutSuccessAction {
+  type: typeof LOGOUT_SUCCESS;
+  payload: null;
+}
+
+interface LogOutFailureAction {
+  type: typeof LOGOUT_FAILURE;
+  payload: string;
+}
+
 // 合并action类型。 AuthActionTypes表示成功登录或失败登录的action
 export type AuthActionTypes =
+  | LogOutFailureAction
+  | LogOutSuccessAction
   | LoginSuccessAction
   | LoginFailureAction
   | RegisterFailureAction
@@ -59,3 +73,13 @@ export const registerFailure = (errorMessage: string): AuthActionTypes => ({
   type: REGISTER_FAILURE,
   payload: errorMessage,
 });
+
+export const logoutSuccess= (): AuthActionTypes => ({
+  type: LOGOUT_SUCCESS,
+  payload: null,
+})
+
+export const logoutFailure= (errorMessage: string): AuthActionTypes => ({
+  type: LOGOUT_FAILURE,
+  payload: errorMessage,
+})
