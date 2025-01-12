@@ -9,6 +9,8 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   AuthActionTypes,
+  FETCHME_SUCCESS,
+  FETCHME_FAILURE,
 } from "../actions/authActions";
 import { logToLocalStorage } from "../../utils/logUtil";
 // 认证相关的数据结构
@@ -31,6 +33,21 @@ const authReducer = (
   action: AuthActionTypes
 ): AuthState => {
   switch (action.type) {
+    case FETCHME_SUCCESS:
+      logToLocalStorage('fetchme',`FETCHME_SUCCESS triggered with username: ${action.payload.username}`);
+      logToLocalStorage('fetchme',"begin to patch status after fetchme")
+      return {
+        ...state,
+        user: action.payload.username,
+        isAuthenticated: true
+      };
+    case FETCHME_FAILURE:
+      return {
+        ...state,
+        user:null,
+        isAuthenticated: false,
+        error: action.payload
+      }
     case REGISTER_SUCCESS:
       return {
         ...state, // 对象扩展运算符，它确保保留之前的状态，只修改user和error
@@ -38,8 +55,8 @@ const authReducer = (
         error: null,
       };
     case LOGIN_SUCCESS:
-      logToLocalStorage(`LOGIN_SUCCESS triggered with username: ${action.payload.username}`);
-      logToLocalStorage("begin to patch status after login")
+      logToLocalStorage('login',`LOGIN_SUCCESS triggered with username: ${action.payload.username}`);
+      logToLocalStorage('login',"begin to patch status after login")
       return {
         ...state, // 对象扩展运算符，它确保保留之前的状态，只修改user和error
         user: action.payload.username,

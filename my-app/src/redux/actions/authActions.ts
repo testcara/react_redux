@@ -9,6 +9,8 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+export const FETCHME_SUCCESS = "FETCHME_SUCCESS";
+export const FETCHME_FAILURE = "FETCHME_FAILURE";
 
 // 定义action
 interface LoginSuccessAction {
@@ -31,6 +33,16 @@ interface RegisterFailureAction {
   payload: string;
 }
 
+interface FetchmeSuccessAction {
+  type: typeof FETCHME_SUCCESS;
+  payload: {username: string};
+}
+
+interface FetchmeFailureAction {
+  type: typeof FETCHME_FAILURE;
+  payload: string;
+}
+
 interface LogOutSuccessAction {
   type: typeof LOGOUT_SUCCESS;
   payload: null;
@@ -45,12 +57,24 @@ interface LogOutFailureAction {
 export type AuthActionTypes =
   | LogOutFailureAction
   | LogOutSuccessAction
+  | FetchmeSuccessAction
+  | FetchmeFailureAction
   | LoginSuccessAction
   | LoginFailureAction
   | RegisterFailureAction
   | RegisterSuccessAction;
 
 // action创建函数，创建定义的action对象
+export const fetchmeFailure = (errorMessage:string): AuthActionTypes => ({
+  type: FETCHME_FAILURE,
+  payload: errorMessage,
+});
+
+export const fetchmeSuccess = (username:string): AuthActionTypes => ({
+  type: FETCHME_SUCCESS,
+  payload: {username},
+});
+
 
 // loginSuccess action creator 接收一个username的参数，然后返回LoginSucessAction
 export const loginSuccess = (username: string): AuthActionTypes => ({

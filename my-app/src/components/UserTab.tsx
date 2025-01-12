@@ -1,19 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@patternfly/react-core";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/thunks/authThunk";
 
-
-const UserTab: React.FC<any> = ({isAuthenticated}) => {
+const UserTab: React.FC<any> = ({isAuthenticated, user, logout}) => {
   const navigate = useNavigate();
   const handleLoginRedirect = () => {
     navigate("/login");
   };
-  const username = useSelector((state: any)=> state.auth.user) || "Guest"
-  const dispatch = useDispatch();
+  const username = user || "Guest"
   const hanldeLogout = ()=> {
-    dispatch(logout())
+    logout()
   }
 
   return (
