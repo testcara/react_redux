@@ -15,3 +15,5 @@
 
 这次用的技术栈：
 react + typescript + patternfly + axios + redux store + redux thunk + api server + file database +  localstorage log
+
+我们这里仍然用到了usehook， 在usehook里dispatch thunk action， 避免了在page或者component多次使用调用dispatch和selector。
