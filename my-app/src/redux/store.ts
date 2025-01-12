@@ -12,10 +12,12 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import authReducer from "./reducers/authReducer";
+import postReducer from "./reducers/postReducer"
 
 // rootReducer是一个将所有reducer合并后的函数，它控制整个应用的状态树。
 const rootReducer = combineReducers({
   auth: authReducer,
+  post: postReducer
 });
 
 // 创建store,来管理所有的应用状态

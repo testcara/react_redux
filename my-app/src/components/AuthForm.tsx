@@ -8,12 +8,7 @@ import {
   InputGroupText,
   InputGroup,
 } from "@patternfly/react-core";
-
-interface AuthFormProps {
-  onSubmit: (username: string, password: string) => void;
-  buttonText: string;
-  error?: string | null;
-}
+import {AuthFormProps} from "../types/UserType"
 
 const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, error }) => {
   const [username, setUsername] = useState("");

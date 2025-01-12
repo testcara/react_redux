@@ -1,6 +1,20 @@
 import React from "react";
-
-const HomePage: React.FC = () => {
-  return <><div className="inner">Home Page</div></>;
+import PostList from "../components/PostList";
+import { HomeProps } from "../types/PostType";
+const Home: React.FC<HomeProps> = ({
+  username,
+  posts,
+  deletePost,
+  editPost,
+}) => {
+  return (
+    <PostList
+      posts={posts}
+      username={username}
+      deletePost={deletePost}
+      editPost={editPost}
+    />
+  );
 };
-export default HomePage;
+
+export default Home;

@@ -35,7 +35,7 @@ interface RegisterFailureAction {
 
 interface FetchmeSuccessAction {
   type: typeof FETCHME_SUCCESS;
-  payload: {username: string};
+  payload: { username: string };
 }
 
 interface FetchmeFailureAction {
@@ -65,16 +65,15 @@ export type AuthActionTypes =
   | RegisterSuccessAction;
 
 // action创建函数，创建定义的action对象
-export const fetchmeFailure = (errorMessage:string): AuthActionTypes => ({
+export const fetchmeFailure = (errorMessage: string): AuthActionTypes => ({
   type: FETCHME_FAILURE,
   payload: errorMessage,
 });
 
-export const fetchmeSuccess = (username:string): AuthActionTypes => ({
+export const fetchmeSuccess = (username: string): AuthActionTypes => ({
   type: FETCHME_SUCCESS,
-  payload: {username},
+  payload: { username },
 });
-
 
 // loginSuccess action creator 接收一个username的参数，然后返回LoginSucessAction
 export const loginSuccess = (username: string): AuthActionTypes => ({
@@ -98,12 +97,12 @@ export const registerFailure = (errorMessage: string): AuthActionTypes => ({
   payload: errorMessage,
 });
 
-export const logoutSuccess= (): AuthActionTypes => ({
+export const logoutSuccess = (): AuthActionTypes => ({
   type: LOGOUT_SUCCESS,
   payload: null,
-})
+});
 
-export const logoutFailure= (errorMessage: string): AuthActionTypes => ({
+export const logoutFailure = (errorMessage: string): AuthActionTypes => ({
   type: LOGOUT_FAILURE,
   payload: errorMessage,
-})
+});
